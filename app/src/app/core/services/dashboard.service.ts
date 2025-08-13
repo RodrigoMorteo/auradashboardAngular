@@ -14,6 +14,18 @@ export interface PaginatedSalesResponse {
   hasMore: boolean;
 }
 
+export interface ActivityItem {
+  id: string;
+  user: string;
+  action: string;
+  timestamp: string;
+}
+
+export interface PaginatedActivityResponse {
+  items: ActivityItem[];
+  hasMore: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +43,12 @@ export class DashboardService {
       params = params.set('quarters', quarters.join(','));
     }
     return this.http.get<any>(`${this.API_URL}/kpi-trends`, { params });
+  }
+
+  getActivityFeed(page: number, pageSize: number): Observable<PaginatedActivityResponse> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
+    return this.http.get<PaginatedActivityResponse>(`${this.API_URL}/activity-feed`, { params });
   }
 }

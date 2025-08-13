@@ -6,7 +6,7 @@ const fs = require('fs').promises; // Use promises-based fs for async operations
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Middleware
 app.use(cors());
@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 // --- Constants ---
 const PROFILES = {
   DEFAULT: 'default',
+  EMPTY_STATE: 'empty_state',
   SLOW_RESPONSE: 'slow_response',
   ERROR_STATE: 'error_state',
 };
@@ -145,6 +146,16 @@ app.get('/api/widgets/sales-records', (req, res) => {
 });
 
 app.get('/api/widgets/kpi-trends', (req, res) => {
+  const { quarters } = req.query;
+  if (quarters && state.kpiTrends) {
+    const requestedQuarters = quarters.split(',');
+    const filteredData = {
+      ...state.kpiTrends,
+      labels: state.kpiTrends.labels.slice(0, requestedQuarters.length * 2), // Simple filter logic
+      datasets: state.kpiTrends.datasets.map(d => ({...d, data: d.data.slice(0, requestedQuarters.length * 2)}))
+    };
+    return res.status(200).json(filteredData);
+  }
   res.status(200).json(state.kpiTrends || {});
 });
 

@@ -4,6 +4,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { SalesRecordsComponent } from './features/dashboard/sales-records/sales-records.component';
 import { KpiTrendsComponent } from './features/dashboard/kpi-trends/kpi-trends.component';
+import { ActivityFeedComponent } from './features/dashboard/activity-feed/activity-feed.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: SalesRecordsComponent },
       { path: 'kpi', component: KpiTrendsComponent },
+      { path: 'activity', component: ActivityFeedComponent },
     ],
   },
   // Wildcard route to redirect unknown paths to the dashboard (which will be guarded)

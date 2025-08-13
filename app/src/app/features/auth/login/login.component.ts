@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
+import { StateService } from '../../../core/services/state.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class LoginComponent {
   private authService = inject(AuthService);
+  private stateService = inject(StateService);
   private router = inject(Router);
 
   isSubmitting = signal(false);
@@ -44,14 +46,14 @@ export class LoginComponent {
     this.isSubmitting.set(true);
     this.errorMessage.set(null);
 
-    // The form value is compatible with the Credentials interface
     const credentials = this.loginForm.getRawValue();
 
     this.authService
       .login(credentials)
       .pipe(finalize(() => this.isSubmitting.set(false)))
-      .subscribe((success) => {
-        if (success) {
+      .subscribe((response) => {
+        if (response && response.user) {
+          this.stateService.setCurrentUser(response.user);
           this.router.navigate(['/']);
         } else {
           this.errorMessage.set('Invalid email or password. Please try again.');

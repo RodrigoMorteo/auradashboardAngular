@@ -1,19 +1,22 @@
+
 {
-  "sales-records": {
-    "data": [],
-    "hasMore": false
-  },
-  "kpi-trends": {
+  "authToken": "mock-jwt-for-auradash-testing-environment",
+  "users": [
+    {
+      "email": "test@example.com",
+      "password": "password123",
+      "name": "Test User"
+    }
+  ],
+  "salesRecords": [],
+  "kpiTrends": {
     "labels": [],
     "datasets": []
   },
-  "activity-feed": {
-    "items": [],
-    "hasMore": false
-  },
+  "activityFeed": [],
   "user-profile": {
-    "name": "",
-    "email": "",
-    "avatarUrl": ""
+    "name": "Test User",
+    "email": "test@example.com",
+    "avatarUrl": "/assets/images/avatar-placeholder.png"
   }
 }
