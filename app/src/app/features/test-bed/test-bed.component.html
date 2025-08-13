@@ -1,0 +1,33 @@
+<div class="p-8 bg-gray-100 rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold mb-4 text-gray-800">AuraDash Test Bed</h1>
+  <p class="mb-6 text-gray-600">
+    This component is a sandbox for verifying library integrations and base
+    styles.
+  </p>
+
+  <div class="mb-8 p-4 border rounded-lg bg-white">
+    <h2 class="text-xl font-semibold mb-2 text-gray-700">ngx-toastr</h2>
+    <button
+      (click)="showToast()"
+      class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+    >
+      Show Success Toast
+    </button>
+  </div>
+
+  <div class="p-4 border rounded-lg bg-white">
+    <h2 class="text-xl font-semibold mb-2 text-gray-700">ngx-charts</h2>
+    <ngx-charts-bar-vertical
+      [view]="[700, 400]"
+      [results]="chartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      xAxisLabel="Department"
+      yAxisLabel="Expenditure"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+</div>

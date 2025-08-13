@@ -1,0 +1,19 @@
+{
+  "sales-records": {
+    "data": [],
+    "hasMore": false
+  },
+  "kpi-trends": {
+    "labels": [],
+    "datasets": []
+  },
+  "activity-feed": {
+    "items": [],
+    "hasMore": false
+  },
+  "user-profile": {
+    "name": "",
+    "email": "",
+    "avatarUrl": ""
+  }
+}
