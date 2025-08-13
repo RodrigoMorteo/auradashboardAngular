@@ -1,30 +1,18 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 import { UserProfile } from '../models/user-profile.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class StateService {
-  private http = inject(HttpClient);
-  private readonly apiBaseUrl = 'http://localhost:3000/api';
+  // Using signals for reactive state management
+  public readonly currentUser = signal<UserProfile | null>(null);
 
-  // Internal writable signal to hold the state
-  private readonly userProfile = signal<UserProfile | null>(null);
+  constructor() { }
 
-  // Public readonly signal to expose the state safely
-  readonly currentUser = this.userProfile.asReadonly();
-
-  fetchUserProfile(): Observable<UserProfile> {
-    return this.http
-      .get<UserProfile>(`${this.apiBaseUrl}/user/profile`)
-      .pipe(
-        tap((profile) => this.userProfile.set(profile))
-      );
-  }
-
-  clearUserProfile(): void {
-    this.userProfile.set(null);
+  // Method to update the user profile in the state
+  // This would typically be called after a successful login or profile fetch
+  setCurrentUser(user: UserProfile | null): void {
+    this.currentUser.set(user);
   }
 }

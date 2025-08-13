@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-import { TestBedComponent } from './features/test-bed/test-bed.component'; // Keep for testing if needed
+import { SalesRecordsComponent } from './features/dashboard/sales-records/sales-records.component';
+import { KpiTrendsComponent } from './features/dashboard/kpi-trends/kpi-trends.component';
 
 export const routes: Routes = [
   {
@@ -14,11 +15,11 @@ export const routes: Routes = [
     component: DashboardLayoutComponent,
     canActivate: [authGuard],
     children: [
-      // The test-bed can be the default child route for now
-      { path: '', component: TestBedComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: SalesRecordsComponent },
+      { path: 'kpi', component: KpiTrendsComponent },
     ],
   },
   // Wildcard route to redirect unknown paths to the dashboard (which will be guarded)
   { path: '**', redirectTo: '' },
 ];
-
