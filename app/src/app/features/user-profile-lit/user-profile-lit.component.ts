@@ -4,14 +4,45 @@ import { UserProfile } from '../../core/models/user-profile.model';
 
 @customElement('app-user-profile-lit')
 export class UserProfileLitComponent extends LitElement {
+  // Use a private backing field for userProfile
+  private _userProfile: UserProfile | null = null;
+
   @property({ type: Object })
-  userProfile: UserProfile | null = null;
+  set userProfile(value: UserProfile | null) {
+    const oldValue = this._userProfile;
+    this._userProfile = value;
+    this.requestUpdate('userProfile', oldValue);
+  }
+
+  get userProfile(): UserProfile | null {
+    return this._userProfile;
+  }
+
+  // Use private backing fields for _displayName and _theme
+  private __displayName: string = '';
+  private __theme: 'Light' | 'Dark' = 'Light';
 
   @state()
-  private _displayName: string = '';
+  set _displayName(value: string) {
+    const oldValue = this.__displayName;
+    this.__displayName = value;
+    this.requestUpdate('_displayName', oldValue);
+  }
+
+  get _displayName(): string {
+    return this.__displayName;
+  }
 
   @state()
-  private _theme: 'Light' | 'Dark' = 'Light';
+  set _theme(value: 'Light' | 'Dark') {
+    const oldValue = this.__theme;
+    this.__theme = value;
+    this.requestUpdate('_theme', oldValue);
+  }
+
+  get _theme(): 'Light' | 'Dark' {
+    return this.__theme;
+  }
 
   static override styles = css`
     :host {
@@ -98,7 +129,7 @@ export class UserProfileLitComponent extends LitElement {
   }
 
   override render() {
-    console.log('Lit component render() invoked. userProfile:', this.userProfile); // Added console.log
+    console.log('Lit component render() invoked. userProfile:', this.userProfile);
     if (!this.userProfile) {
       return html`<p>Loading profile...</p>`;
     }
