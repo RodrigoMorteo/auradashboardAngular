@@ -10,25 +10,25 @@
           <thead>
             <tr>
               @if (viewMode === 'full') {
-                <th (click)="changeSort('orderId')"
+                <th scope="col" (click)="changeSort('orderId')"
                   class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
                   [ngClass]="headerClasses">
                   Order ID
                 </th>
               }
-              <th (click)="changeSort('productName')"
+              <th scope="col" (click)="changeSort('productName')"
                 class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
                 [ngClass]="headerClasses">
                 Product Name
               </th>
               @if (viewMode === 'full') {
-                <th (click)="changeSort('saleDate')"
+                <th scope="col" (click)="changeSort('saleDate')"
                   class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
                   [ngClass]="headerClasses">
                   Sale Date
                 </th>
               }
-              <th (click)="changeSort('amount')"
+              <th scope="col" (click)="changeSort('amount')"
                 class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
                 [ngClass]="headerClasses">
                 Amount

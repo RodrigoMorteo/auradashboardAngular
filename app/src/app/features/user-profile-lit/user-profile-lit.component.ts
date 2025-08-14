@@ -134,20 +134,25 @@ export class UserProfileLitComponent extends LitElement {
       return html`<p>Loading profile...</p>`;
     }
     return html`
-      <div>
-        <h2>User Profile</h2>
-        <label>
-          Name:
-          <input type="text" .value=${this._displayName} @input=${this._handleInput} />
-        </label>
-        <label>
-          Theme:
-          <select .value=${this._theme} @change=${this._handleSelect}>
+      <div class="p-4 bg-white rounded-lg shadow-xs">
+        <h4 class="mb-4 font-semibold text-gray-800">User Profile (Lit)</h4>
+        <div class="mb-4">
+          <label for="displayName" class="block text-sm font-medium text-gray-700">Display Name</label>
+          <input id="displayName" type="text" .value=${this._displayName} @input=${this._handleInput}
+            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        </div>
+        <div class="mb-4">
+          <label for="themePreference" class="block text-sm font-medium text-gray-700">Theme Preference</label>
+          <select id="themePreference" @change=${this._handleSelect} .value=${this._theme}
+            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             <option value="Light">Light</option>
             <option value="Dark">Dark</option>
           </select>
-        </label>
-        <button @click=${this._handleSave}>Save</button>
+        </div>
+        <button @click=${this._handleSave}
+          class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">
+          Save
+        </button>
       </div>
     `;
   }

@@ -73,3 +73,6 @@ Step 4.3: Enhance UX. Up to this point most of the comopnents have associated ei
 Phase 5 Deployment
 Step 5.1: Write the Dockerfile for the new Angular application (app/Dockerfile) to build an optimized production image and serve it with a lightweight web server like Nginx.
 Verify that the docker-compose up command successfully builds and launches both the frontend and backend services, fulfilling the "Deployment Simplicity" tenet.
+
+Phase 6: Optional 
+6.1 Implement dark theme using tailwind
