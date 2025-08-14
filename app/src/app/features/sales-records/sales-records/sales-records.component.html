@@ -5,42 +5,52 @@
     <div class="text-center p-8 text-gray-500 dark:text-gray-400">Loading...</div>
   } @else {
     <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
-      <table class="min-w-full leading-normal">
-        <thead>
-          <tr>
-            <th (click)="changeSort('orderId')"
-              class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
-              [ngClass]="headerClasses">
-              Order ID
-            </th>
-            <th (click)="changeSort('productName')"
-              class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
-              [ngClass]="headerClasses">
-              Product Name
-            </th>
-            <th (click)="changeSort('saleDate')"
-              class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
-              [ngClass]="headerClasses">
-              Sale Date
-            </th>
-            <th (click)="changeSort('amount')"
-              class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
-              [ngClass]="headerClasses">
-              Amount
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (record of salesRecords(); track record.orderId) {
-            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-              <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.orderId }}</td>
-              <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.productName }}</td>
-              <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.saleDate | date: 'medium' }}</td>
-              <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.amount | currency }}</td>
+      <div class="overflow-x-auto">
+        <table class="min-w-full leading-normal">
+          <thead>
+            <tr>
+              @if (viewMode === 'full') {
+                <th (click)="changeSort('orderId')"
+                  class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
+                  [ngClass]="headerClasses">
+                  Order ID
+                </th>
+              }
+              <th (click)="changeSort('productName')"
+                class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
+                [ngClass]="headerClasses">
+                Product Name
+              </th>
+              @if (viewMode === 'full') {
+                <th (click)="changeSort('saleDate')"
+                  class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
+                  [ngClass]="headerClasses">
+                  Sale Date
+                </th>
+              }
+              <th (click)="changeSort('amount')"
+                class="cursor-pointer border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-700 text-left font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs"
+                [ngClass]="headerClasses">
+                Amount
+              </th>
             </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (record of salesRecords(); track record.orderId) {
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                @if (viewMode === 'full') {
+                  <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.orderId }}</td>
+                }
+                <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.productName }}</td>
+                @if (viewMode === 'full') {
+                  <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.saleDate | date: 'medium' }}</td>
+                }
+                <td class="border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-200" [ngClass]="cellClasses">{{ record.amount | currency }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
 
       <!-- Pagination -->
       @if (viewMode === 'full') {

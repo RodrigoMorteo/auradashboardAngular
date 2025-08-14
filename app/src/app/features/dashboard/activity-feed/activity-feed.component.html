@@ -9,17 +9,17 @@
       <ul class="list-none p-0 m-0">
         @for (item of activityItems(); track item.id) {
           <li
-            class="border-b border-gray-200 dark:border-gray-700 last:border-b-0"
+            class="border-b border-gray-200 dark:border-gray-700 last:border-b-0 flex justify-between items-center"
             [ngClass]="itemClasses"
           >
             <p
-              class="text-gray-800 dark:text-gray-200"
+              class="text-gray-800 dark:text-gray-200 flex-grow"
               [ngClass]="actionTextClasses"
             >
               <span class="font-semibold">{{ item.user }}</span> {{ item.action }}
             </p>
             <p
-              class="text-gray-500 dark:text-gray-400 text-xs"
+              class="text-gray-500 dark:text-gray-400 text-xs ml-2 flex-shrink-0"
             >
               {{ item.timestamp | date:'shortTime' }}
             </p>
