@@ -21,6 +21,27 @@ export class ActivityFeedComponent implements OnInit, OnDestroy {
   hasMore = signal(true);
   private realTimeUpdateInterval: any;
 
+  get scrollContainerClasses() {
+    return {
+      'h-96': this.viewMode === 'full',
+      'h-48': this.viewMode === 'compact',
+    };
+  }
+
+  get itemClasses() {
+    return {
+      'py-2': this.viewMode === 'full',
+      'py-1': this.viewMode === 'compact',
+    };
+  }
+
+  get actionTextClasses() {
+    return {
+      'text-sm': this.viewMode === 'full',
+      'text-xs': this.viewMode === 'compact',
+    };
+  }
+
   ngOnInit(): void {
     this.fetchActivityFeed();
     if (this.viewMode === 'full') {

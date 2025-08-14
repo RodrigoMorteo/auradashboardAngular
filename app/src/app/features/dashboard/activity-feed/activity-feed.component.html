@@ -4,17 +4,28 @@
   <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
     <div
       class="overflow-y-auto p-4"
-      [class.h-96]="viewMode === 'full'"
-      [class.h-48]="viewMode === 'compact'"
+      [ngClass]="scrollContainerClasses"
       (scroll)="viewMode === 'full' ? onScroll($event) : null">
-      @for (item of activityItems(); track item.id) {
-        <div class="border-b border-gray-200 dark:border-gray-700 py-2 last:border-b-0">
-          <p class="text-sm text-gray-800 dark:text-gray-200">
-            <span class="font-semibold">{{ item.user }}</span> {{ item.action }}
-          </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">{{ item.timestamp | date:'shortTime' }}</p>
-        </div>
-      }
+      <ul class="list-none p-0 m-0">
+        @for (item of activityItems(); track item.id) {
+          <li
+            class="border-b border-gray-200 dark:border-gray-700 last:border-b-0"
+            [ngClass]="itemClasses"
+          >
+            <p
+              class="text-gray-800 dark:text-gray-200"
+              [ngClass]="actionTextClasses"
+            >
+              <span class="font-semibold">{{ item.user }}</span> {{ item.action }}
+            </p>
+            <p
+              class="text-gray-500 dark:text-gray-400 text-xs"
+            >
+              {{ item.timestamp | date:'shortTime' }}
+            </p>
+          </li>
+        } 
+      </ul>
 
       @if (isLoading()) {
         <div class="text-center py-4 text-gray-500 dark:text-gray-400">Loading more activities...</div>

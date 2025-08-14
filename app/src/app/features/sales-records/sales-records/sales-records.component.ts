@@ -24,6 +24,26 @@ export class SalesRecordsComponent implements OnInit {
   sortColumn = signal<SortableColumn>('saleDate');
   sortDirection = signal<'asc' | 'desc'>('desc');
 
+  get headerClasses() {
+    return {
+      'px-5': this.viewMode === 'full',
+      'py-3': this.viewMode === 'full',
+      'px-3': this.viewMode === 'compact',
+      'py-2': this.viewMode === 'compact',
+    };
+  }
+
+  get cellClasses() {
+    return {
+      'px-5': this.viewMode === 'full',
+      'py-5': this.viewMode === 'full',
+      'text-sm': this.viewMode === 'full',
+      'px-3': this.viewMode === 'compact',
+      'py-2': this.viewMode === 'compact',
+      'text-xs': this.viewMode === 'compact',
+    };
+  }
+
   ngOnInit(): void {
     this.fetchSalesRecords();
   }
@@ -73,5 +93,12 @@ export class SalesRecordsComponent implements OnInit {
     if (this.currentPage() === 1) return;
     this.currentPage.update(page => page - 1);
     this.fetchSalesRecords();
+  }
+
+  getAriaSort(column: SortableColumn): 'ascending' | 'descending' | 'none' {
+    if (this.sortColumn() === column) {
+      return this.sortDirection() === 'asc' ? 'ascending' : 'descending';
+    }
+    return 'none';
   }
 }
