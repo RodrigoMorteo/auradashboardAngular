@@ -4,7 +4,9 @@
     {
       "email": "test@example.com",
       "password": "password123",
-      "name": "Test User"
+      "name": "Test User",
+      "avatarUrl": "/assets/images/avatar-placeholder.png",
+      "theme": "Light"
     }
   ],
   "salesRecords": [
@@ -60,6 +62,7 @@
   "user-profile": {
     "name": "Test User",
     "email": "test@example.com",
-    "avatarUrl": "/assets/images/avatar-placeholder.png"
+    "avatarUrl": "/assets/images/avatar-placeholder.png",
+    "theme": "Light"
   }
 }

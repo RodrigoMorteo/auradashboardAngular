@@ -71,7 +71,7 @@ export class UserProfileLitComponent extends LitElement {
   override willUpdate(changedProperties: PropertyValues<this>) {
     if (changedProperties.has('userProfile') && this.userProfile) {
       this._displayName = this.userProfile.name;
-      //this._theme = this.userProfile.preferences.theme;
+      this._theme = (this.userProfile.theme === 'Light' || this.userProfile.theme === 'Dark') ? this.userProfile.theme : 'Light';
     }
   }
 
@@ -98,6 +98,7 @@ export class UserProfileLitComponent extends LitElement {
   }
 
   override render() {
+    console.log('Lit component render() invoked. userProfile:', this.userProfile); // Added console.log
     if (!this.userProfile) {
       return html`<p>Loading profile...</p>`;
     }
@@ -120,4 +121,3 @@ export class UserProfileLitComponent extends LitElement {
     `;
   }
 }
-

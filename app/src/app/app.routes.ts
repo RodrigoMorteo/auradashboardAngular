@@ -6,6 +6,7 @@ import { SalesRecordsComponent } from './features/sales-records/sales-records/sa
 import { KpiTrendsComponent } from './features/dashboard/kpi-trends/kpi-trends.component';
 import { ActivityFeedComponent } from './features/dashboard/activity-feed/activity-feed.component';
 import { DashboardComponent } from './features/dashboard/dashboard/dashboard.component';
+import { UserProfilePageComponent } from './features/user-profile-page/user-profile-page'; // Changed import path
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: 'reports', component: SalesRecordsComponent },
       { path: 'kpi', component: KpiTrendsComponent },
       { path: 'activity', component: ActivityFeedComponent },
+      { path: 'profile', component: UserProfilePageComponent }, // Added new route for user profile
     ],
   },
   // Wildcard route to redirect unknown paths to the dashboard (which will be guarded)
