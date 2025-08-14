@@ -2,9 +2,10 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-import { SalesRecordsComponent } from './features/dashboard/sales-records/sales-records.component';
+import { SalesRecordsComponent } from './features/sales-records/sales-records/sales-records.component';
 import { KpiTrendsComponent } from './features/dashboard/kpi-trends/kpi-trends.component';
 import { ActivityFeedComponent } from './features/dashboard/activity-feed/activity-feed.component';
+import { DashboardComponent } from './features/dashboard/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: SalesRecordsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'reports', component: SalesRecordsComponent },
       { path: 'kpi', component: KpiTrendsComponent },
       { path: 'activity', component: ActivityFeedComponent },
     ],
