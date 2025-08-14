@@ -5,24 +5,26 @@
     <div class="text-center p-8 text-gray-500 dark:text-gray-400">Loading Chart...</div>
   } @else {
     <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-      <form [formGroup]="filterForm" class="flex space-x-4 mb-4">
-        <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <input type="checkbox" formControlName="q1" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
-          <span>Q1</span>
-        </label>
-        <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <input type="checkbox" formControlName="q2" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
-          <span>Q2</span>
-        </label>
-        <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <input type="checkbox" formControlName="q3" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
-          <span>Q3</span>
-        </label>
-        <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <input type="checkbox" formControlName="q4" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
-          <span>Q4</span>
-        </label>
-      </form>
+      @if (viewMode === 'full') {
+        <form [formGroup]="filterForm" class="flex space-x-4 mb-4">
+          <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+            <input type="checkbox" formControlName="q1" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
+            <span>Q1</span>
+          </label>
+          <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+            <input type="checkbox" formControlName="q2" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
+            <span>Q2</span>
+          </label>
+          <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+            <input type="checkbox" formControlName="q3" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
+            <span>Q3</span>
+          </label>
+          <label class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+            <input type="checkbox" formControlName="q4" class="form-checkbox h-5 w-5 text-indigo-600 rounded">
+            <span>Q4</span>
+          </label>
+        </form>
+      }
 
       <ngx-charts-line-chart
         [animations]="false"

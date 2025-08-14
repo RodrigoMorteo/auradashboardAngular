@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardService, ActivityItem } from '../../../core/services/dashboard.service';
 import { finalize } from 'rxjs';
@@ -13,6 +13,8 @@ import { finalize } from 'rxjs';
 export class ActivityFeedComponent implements OnInit, OnDestroy {
   private dashboardService = inject(DashboardService);
 
+  @Input() viewMode: 'full' | 'compact' = 'full';
+
   activityItems = signal<ActivityItem[]>([]);
   isLoading = signal(false);
   currentPage = signal(1);
@@ -21,7 +23,9 @@ export class ActivityFeedComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchActivityFeed();
-    this.startRealTimeUpdates();
+    if (this.viewMode === 'full') {
+      this.startRealTimeUpdates();
+    }
   }
 
   ngOnDestroy(): void {
@@ -31,6 +35,17 @@ export class ActivityFeedComponent implements OnInit, OnDestroy {
   }
 
   fetchActivityFeed(): void {
+    if (this.viewMode === 'compact') {
+      this.isLoading.set(true);
+      this.dashboardService.getActivityFeed(1, 5) // Fetch only 5 items for compact view
+        .pipe(finalize(() => this.isLoading.set(false)))
+        .subscribe(response => {
+          this.activityItems.set(response.items);
+          this.hasMore.set(false); // No more pages in compact view
+        });
+      return;
+    }
+
     if (!this.hasMore() && this.currentPage() > 1) return; // Prevent fetching if no more data
 
     this.isLoading.set(true);
@@ -44,6 +59,9 @@ export class ActivityFeedComponent implements OnInit, OnDestroy {
   }
 
   onScroll(event: Event): void {
+    if (this.viewMode === 'compact') {
+      return; // Do nothing on scroll in compact mode
+    }
     const element = event.target as HTMLElement;
     if (element.scrollHeight - element.scrollTop === element.clientHeight && this.hasMore() && !this.isLoading()) {
       this.fetchActivityFeed();

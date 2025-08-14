@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Customizable Dashboard</h2>
+
+  <div cdkDropList class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" (cdkDropListDropped)="drop($event)">
+    @for (widget of dashboardWidgets; track widget) {
+      <div cdkDrag class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4 cursor-grab">
+        <div class="cdk-drag-handle text-lg font-semibold mb-2">
+          {{ widget | titlecase }}
+        </div>
+        @switch (widget) {
+          @case ('kpi') {
+            <app-kpi-trends viewMode="compact"></app-kpi-trends>
+          }
+          @case ('activity') {
+            <app-activity-feed viewMode="compact"></app-activity-feed>
+          }
+          @case ('sales') {
+            <app-sales-records viewMode="compact"></app-sales-records>
+          }
+          @default {
+            <p>Unknown widget: {{ widget }}</p>
+          }
+        }
+      </div>
+    }
+  </div>
+</div>

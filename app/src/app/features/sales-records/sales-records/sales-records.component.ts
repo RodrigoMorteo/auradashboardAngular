@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardService, SalesRecord } from '../../../core/services/dashboard.service';
 import { finalize } from 'rxjs';
@@ -15,6 +15,8 @@ type SortableColumn = 'orderId' | 'productName' | 'saleDate' | 'amount';
 export class SalesRecordsComponent implements OnInit {
   private dashboardService = inject(DashboardService);
 
+  @Input() viewMode: 'full' | 'compact' = 'full';
+
   isLoading = signal(true);
   salesRecords = signal<SalesRecord[]>([]);
   currentPage = signal(1);
@@ -28,12 +30,14 @@ export class SalesRecordsComponent implements OnInit {
 
   fetchSalesRecords(): void {
     this.isLoading.set(true);
-    this.dashboardService.getSalesRecords(this.currentPage(), 10)
+    const recordsToFetch = this.viewMode === 'compact' ? 5 : 10;
+
+    this.dashboardService.getSalesRecords(this.currentPage(), recordsToFetch)
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe(response => {
         const sortedData = this.sortData(response.data);
         this.salesRecords.set(sortedData);
-        this.hasMorePages.set(response.hasMore);
+        this.hasMorePages.set(this.viewMode === 'compact' ? false : response.hasMore);
       });
   }
 

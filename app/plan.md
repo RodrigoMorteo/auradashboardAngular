@@ -56,7 +56,8 @@ Step 3.3: Implement Drag-and-Drop Functionality:
 
 Integrate the @angular/cdk/drag-drop module into the DashboardLayoutComponent.
 Apply the necessary directives to the widget containers to enable the reordering functionality described in Section 3.3.
-Phase 4: Finalization, NFRs, and Deployment
+
+Phase 4: NFRs
 This final phase ensures the application is robust, user-friendly, and meets the non-functional requirements.
 
 Step 4.1: Implement Global Error Handling and Loading States:
@@ -66,7 +67,9 @@ Implement loading indicators (e.g., spinners, skeletons) in all data-fetching wi
 Step 4.2: Address Accessibility (A11y) and Finalize Docker:
 
 Review all components for accessibility compliance (semantic HTML, ARIA roles, keyboard navigation) as specified in Section 4.1.
-Write the Dockerfile for the new Angular application (app/Dockerfile) to build an optimized production image and serve it with a lightweight web server like Nginx.
-Verify that the docker-compose up command successfully builds and launches both the frontend and backend services, fulfilling the "Deployment Simplicity" tenet.
-This plan provides a complete and logical roadmap. We can now proceed step-by-step, and you can ask me to help implement the code for each part.
 
+Step 4.3: Enhance UX. Up to this point most of the comopnents have associated either empty css files or have custom styles in their html files. Taking advantage of tailwind, make the UI look professional, modern and outstanding. Note that the compact versions of the components must implement css to reduce the size of the component in the dashboard so all the components are shown equally in size (e.g. reducing text size and text spacing for live feed and sales reports).
+
+Phase 5 Deployment
+Step 5.1: Write the Dockerfile for the new Angular application (app/Dockerfile) to build an optimized production image and serve it with a lightweight web server like Nginx.
+Verify that the docker-compose up command successfully builds and launches both the frontend and backend services, fulfilling the "Deployment Simplicity" tenet.

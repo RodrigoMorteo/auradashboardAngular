@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 import { DashboardService } from '../../../core/services/dashboard.service';
@@ -14,6 +14,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 export class KpiTrendsComponent implements OnInit {
   private dashboardService = inject(DashboardService);
   private fb = inject(FormBuilder);
+
+  @Input() viewMode: 'full' | 'compact' = 'full';
 
   chartData = signal<any[]>([]);
   isLoading = signal(true);
@@ -42,9 +44,19 @@ export class KpiTrendsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    if (this.viewMode === 'compact') {
+      this.view = [300, 200];
+      this.legend = false;
+      this.showXAxisLabel = false;
+      this.showYAxisLabel = false;
+      this.timeline = false;
+      this.filterForm.disable();
+    }
+
     this.fetchChartData();
 
     this.filterForm.valueChanges.subscribe(() => {
+      // The form is disabled in compact mode, so this will only fire in full mode.
       this.fetchChartData();
     });
   }
