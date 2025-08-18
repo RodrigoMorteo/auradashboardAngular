@@ -1,0 +1,21 @@
+{
+  "name": "auradash-monorepo",
+  "version": "0.3.0",
+  "private": true,
+  "description": "AuraDash: A Modern Test Application Blueprint for Advanced Framework Validation (Angular Edition)",
+  "workspaces": [
+    "apps/auradash",
+    "apps/mock-api"
+  ],
+  "scripts": {
+    "setup": "npm install --workspaces --if-present",
+    "dev": "npm run dev --workspace=apps/mock-api & npm run start --workspace=apps/auradash",
+    "build": "npm run build --workspace=apps/auradash",
+    "start:prod": "npm run start --workspace=apps/mock-api",
+    "e2e": "npm run test --workspace=apps/auradash",
+    "e2e:init": "npm install --workspace=apps/auradash && npx playwright install --with-deps"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

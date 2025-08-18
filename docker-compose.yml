@@ -1,0 +1,39 @@
+# AuraDash Docker Compose Setup
+# This file orchestrates the frontend and mock-backend services.
+# To run: docker-compose up
+#
+# Services:
+#   - backend: The Node.js/Express mock API server.
+#   - frontend: The Angular application, served via Nginx.
+#
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./mock-server
+      dockerfile: Dockerfile
+    container_name: auradash-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./mock-server:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - auradash-net
+
+  frontend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: auradash-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - auradash-net
+
+networks:
+  auradash-net:
+    driver: bridge

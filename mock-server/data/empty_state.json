@@ -1,0 +1,22 @@
+
+{
+  "authToken": "mock-jwt-for-auradash-testing-environment",
+  "users": [
+    {
+      "email": "test@example.com",
+      "password": "password123",
+      "name": "Test User"
+    }
+  ],
+  "salesRecords": [],
+  "kpiTrends": {
+    "labels": [],
+    "datasets": []
+  },
+  "activityFeed": [],
+  "user-profile": {
+    "name": "Test User",
+    "email": "test@example.com",
+    "avatarUrl": "/assets/images/avatar-placeholder.png"
+  }
+}

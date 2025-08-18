@@ -1,0 +1,65 @@
+<div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden h-full flex flex-col">
+  <h3 class="text-lg font-semibold text-gray-800 dark:text-white p-4 border-b border-gray-200 dark:border-gray-700">
+    Recent Sales
+  </h3>
+
+  @if (isLoading() && salesRecords().length === 0) {
+    <div class="flex-grow flex items-center justify-center text-gray-500 dark:text-gray-400">Loading...</div>
+  } @else {
+    <div class="overflow-y-auto flex-grow">
+      <table class="min-w-full leading-normal">
+        <thead class="sticky top-0 bg-white dark:bg-gray-800">
+          <tr>
+            @if (viewMode === 'full') {
+              <th scope="col" (click)="changeSort('orderId')"
+                class="px-3 py-2 border-b-2 border-gray-200 dark:border-gray-700 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider cursor-pointer">
+                Order ID
+              </th>
+            }
+            <th scope="col" (click)="changeSort('productName')"
+              class="px-3 py-2 border-b-2 border-gray-200 dark:border-gray-700 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider cursor-pointer">
+              Product Name
+            </th>
+            @if (viewMode === 'full') {
+              <th scope="col" (click)="changeSort('saleDate')"
+                class="px-3 py-2 border-b-2 border-gray-200 dark:border-gray-700 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider cursor-pointer">
+                Sale Date
+              </th>
+            }
+            <th scope="col" (click)="changeSort('amount')"
+              class="px-3 py-2 border-b-2 border-gray-200 dark:border-gray-700 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider cursor-pointer">
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (record of salesRecords(); track record.orderId) {
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+              @if (viewMode === 'full') {
+                <td class="px-3 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-200">{{ record.orderId }}</td>
+              }
+              <td class="px-3 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-200">{{ record.productName }}</td>
+              @if (viewMode === 'full') {
+                <td class="px-3 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-200">{{ record.saleDate | date: 'mediumDate' }}</td>
+              }
+              <td class="px-3 py-2 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-200">{{ record.amount | currency }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (viewMode === 'full') {
+      <div class="p-2 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-end items-center">
+        <div class="inline-flex">
+          <button (click)="previousPage()" [disabled]="currentPage() === 1" class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-200 rounded-l-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
+            Prev
+          </button>
+          <button (click)="nextPage()" [disabled]="!hasMorePages()" class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-200 rounded-r-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
+            Next
+          </button>
+        </div>
+      </div>
+    }
+  }
+</div>
