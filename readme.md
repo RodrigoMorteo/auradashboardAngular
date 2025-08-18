@@ -50,7 +50,7 @@ This is the simplest and most reliable way to run AuraDash.
     docker-compose up
     ```
 4.  Wait for the containers to build and the services to start.
-5.  **Open your browser and navigate to `http://localhost:3000`**.
+5.  **Open your browser and navigate to `http://localhost`**.
 
 The application will be running with the Angular frontend communicating with the mock backend.
 
@@ -71,3 +71,19 @@ npm install
 
 # Start the server
 npm start
+```
+
+Now start the UI:
+```bash
+# Move back one folder
+cd ..
+
+# Navigate to the Angular application directory
+cd app
+
+# Install dependencies
+npm install
+
+# Start the Angular development server
+npm start
+```
