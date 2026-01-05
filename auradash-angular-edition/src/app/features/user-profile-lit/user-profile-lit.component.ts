@@ -7,7 +7,7 @@ export class UserProfileLit extends LitElement {
   @property() name = '';
   @property() email = '';
 
-  render() {
+  override render() {
     return html`
       <div style="padding: 1rem; border: 2px solid #0f172a; border-radius: 0.5rem; background: #f8fafc;">
         <h4 style="margin: 0; color: #0f172a;">Shadow DOM Profile (Lit)</h4>
@@ -30,7 +30,7 @@ export class UserProfileLit extends LitElement {
 })
 export class UserProfileLitComponent {
   name = 'Admin User';
-  email = 'admin@example.com';
+  email = 'admin&#64;example.com';
   isBrowser = false;
 
   constructor() {

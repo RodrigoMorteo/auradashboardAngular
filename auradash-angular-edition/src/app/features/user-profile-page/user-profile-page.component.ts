@@ -21,7 +21,7 @@ import { UserProfileLitComponent } from '../user-profile-lit/user-profile-lit.co
           
           <div class="grid grid-cols-3 gap-4 border-b border-slate-100 pb-4">
             <span class="text-sm font-medium text-slate-500">Email Address</span>
-            <span class="col-span-2 text-slate-900">admin@example.com</span>
+            <span class="col-span-2 text-slate-900">admin&#64;example.com</span>
           </div>
           
           <div class="mt-8">
