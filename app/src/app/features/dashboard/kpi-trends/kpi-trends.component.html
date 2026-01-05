@@ -29,22 +29,12 @@
     <div class="flex-grow flex items-center justify-center text-gray-500 dark:text-gray-400">Loading Chart...</div>
   } @else {
     <div class="flex-grow p-4">
-      <ngx-charts-line-chart
-        role="img"
-        aria-label="Line chart showing Key Performance Indicator trends over time."
-        [animations]="false"
-        [view]="view"
-        [scheme]="colorScheme"
-        [legend]="legend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxis]="true"
-        [yAxis]="true"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        [timeline]="timeline"
-        [results]="chartData()">
-      </ngx-charts-line-chart>
+      @defer (when isBrowser()) {
+        <canvas #chartCanvas class="w-full h-full">
+        </canvas>
+      } @placeholder {
+        <div class="flex items-center justify-center h-full text-gray-400">Loading Chart...</div>
+      }
     </div>
   }
 </div>

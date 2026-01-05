@@ -1,8 +1,0 @@
-{
-  "track_id": "fix_ng0401_20260105",
-  "type": "bug",
-  "status": "new",
-  "created_at": "2026-01-05T06:08:00Z",
-  "updated_at": "2026-01-05T06:08:00Z",
-  "description": "Investigate and resolve the persistent NG0401: Missing Platform error occurring during the SSR build/serve process."
-}

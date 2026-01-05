@@ -1,0 +1,76 @@
+❯ Building...
+✔ Building...
+Browser bundles     
+Initial chunk files  | Names                      |  Raw size
+main.js              | main                       |  58.14 kB | 
+styles.css           | styles                     |  11.41 kB | 
+chunk-ZGBWINWN.js    | -                          |   1.45 kB | 
+polyfills.js         | polyfills                  |  95 bytes | 
+
+                     | Initial total              |  71.09 kB
+
+Lazy chunk files     | Names                      |  Raw size
+chunk-AARRIEZZ.js    | dashboard-layout-component | 165.55 kB | 
+chunk-XHNUMPYO.js    | -                          |  67.72 kB | 
+chunk-ZH6W2E3X.js    | -                          |  62.30 kB | 
+chunk-FJ6LA2J6.js    | login-component            |  60.53 kB | 
+chunk-VP73XM5Z.js    | -                          |  60.51 kB | 
+chunk-NIRCT467.js    | user-profile-page          |  54.62 kB | 
+chunk-KXZ7AGUH.js    | dashboard-component        |   7.48 kB | 
+chunk-RQ5E7YLT.js    | -                          |   3.75 kB | 
+chunk-6R7TKJHP.js    | -                          |   1.49 kB | 
+chunk-XFCEFFP5.js    | auth-guard                 | 488 bytes | 
+chunk-TUZ37I7I.js    | activity-feed-component    | 202 bytes | 
+chunk-QN2OI7ED.js    | sales-records-component    | 202 bytes | 
+chunk-PRFYIMAA.js    | kpi-trends-component       | 196 bytes | 
+
+
+Server bundles      
+Initial chunk files  | Names                      |  Raw size
+main.server.mjs      | main.server                |  54.23 kB | 
+server.mjs           | server                     |   1.79 kB | 
+chunk-UL4262L2.mjs   | -                          |   1.49 kB | 
+polyfills.server.mjs | polyfills.server           | 266 bytes | 
+
+Lazy chunk files     | Names                      |  Raw size
+chunk-ZZBHNAHI.mjs   | dashboard-layout-component | 165.59 kB | 
+chunk-5LJVALGI.mjs   | -                          |  67.76 kB | 
+chunk-6X4UOV42.mjs   | -                          |  62.33 kB | 
+chunk-DG23BPHO.mjs   | login-component            |  60.57 kB | 
+chunk-N5JU5YJ5.mjs   | -                          |  60.55 kB | 
+chunk-54A5AXGR.mjs   | user-profile-page          |  54.66 kB | 
+chunk-R2AVDTIM.mjs   | dashboard-component        |   7.52 kB | 
+chunk-IQTQTELU.mjs   | -                          |   3.79 kB | 
+chunk-WQ5RXFY6.mjs   | -                          |   1.52 kB | 
+chunk-QQDX5JRN.mjs   | auth-guard                 | 524 bytes | 
+chunk-M7T7ZPOK.mjs   | activity-feed-component    | 239 bytes | 
+chunk-S4MCVLFJ.mjs   | sales-records-component    | 239 bytes | 
+chunk-UUX6UIW4.mjs   | kpi-trends-component       | 233 bytes | 
+
+Application bundle generation complete. [2.182 seconds] - 2026-01-05T05:46:19.523Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+Error: NG0401: Missing Platform: This may be due to using `bootstrapApplication` on the server without passing a `BootstrapContext`. Please make sure that `bootstrapApplication` is called with a `context` argument. Find more at https://v21.angular.dev/errors/NG0401
+    at internalCreateApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-2I5EJGQM.js:23724:11)
+    at bootstrapApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-P37FMHGV.js:1026:35)
+    at bootstrap (/home/rod/repos/auradashboardAngular/app/src/main.server.ts:5:25)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10599:32)
+    at Generator.next (<anonymous>)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-YHCV7DAQ.js:85:61)
+    at new ZoneAwarePromise (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/zone__js_node.js:1226:23)
+    at __async (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-YHCV7DAQ.js:69:10)
+    at getRoutesFromAngularRouterConfig (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10575:17)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10717:17)
+Error: NG0401: Missing Platform: This may be due to using `bootstrapApplication` on the server without passing a `BootstrapContext`. Please make sure that `bootstrapApplication` is called with a `context` argument. Find more at https://v21.angular.dev/errors/NG0401
+    at internalCreateApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-2I5EJGQM.js:23724:11)
+    at bootstrapApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-P37FMHGV.js:1026:35)
+    at bootstrap (/home/rod/repos/auradashboardAngular/app/src/main.server.ts:5:25)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10599:32)
+    at Generator.next (<anonymous>)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-YHCV7DAQ.js:85:61)
+    at new ZoneAwarePromise (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/zone__js_node.js:1226:23)
+    at __async (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-YHCV7DAQ.js:69:10)
+    at getRoutesFromAngularRouterConfig (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10575:17)
+    at eval (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-XNV2SJLD.js:10717:17)

@@ -1,0 +1,101 @@
+❯ Building...
+✔ Building...
+Browser bundles     
+Initial chunk files  | Names                      |  Raw size
+main.js              | main                       |  58.14 kB | 
+styles.css           | styles                     |  11.41 kB | 
+chunk-SG2LYVAH.js    | -                          | 894 bytes | 
+
+                     | Initial total              |  70.44 kB
+
+Lazy chunk files     | Names                      |  Raw size
+chunk-ZDBQOQBB.js    | dashboard-layout-component | 165.55 kB | 
+chunk-XHNUMPYO.js    | -                          |  67.72 kB | 
+chunk-LKW6PW5B.js    | -                          |  62.18 kB | 
+chunk-VFPELP32.js    | login-component            |  60.53 kB | 
+chunk-VP73XM5Z.js    | -                          |  60.51 kB | 
+chunk-3HBC4YXE.js    | user-profile-page          |  54.62 kB | 
+chunk-3SRM3VRX.js    | dashboard-component        |   7.48 kB | 
+chunk-OR7XVQEI.js    | -                          |   3.75 kB | 
+chunk-6R7TKJHP.js    | -                          |   1.49 kB | 
+chunk-32KP5NZU.js    | auth-guard                 | 488 bytes | 
+chunk-MLUC7ZSO.js    | activity-feed-component    | 202 bytes | 
+chunk-PAEZQY22.js    | sales-records-component    | 202 bytes | 
+chunk-VUQGZAEH.js    | kpi-trends-component       | 196 bytes | 
+
+
+Server bundles      
+Initial chunk files  | Names                      |  Raw size
+main.server.mjs      | main.server                |  54.88 kB | 
+server.mjs           | server                     |   1.79 kB | 
+chunk-VI6KR4OF.mjs   | -                          | 928 bytes | 
+polyfills.server.mjs | polyfills.server           | 243 bytes | 
+
+Lazy chunk files     | Names                      |  Raw size
+chunk-PCINZ7RD.mjs   | dashboard-layout-component | 165.59 kB | 
+chunk-5LJVALGI.mjs   | -                          |  67.76 kB | 
+chunk-VTZCZZS7.mjs   | -                          |  62.22 kB | 
+chunk-DUQQUGUS.mjs   | login-component            |  60.57 kB | 
+chunk-N5JU5YJ5.mjs   | -                          |  60.55 kB | 
+chunk-O4TEUGH3.mjs   | user-profile-page          |  54.66 kB | 
+chunk-67IOFFJ3.mjs   | dashboard-component        |   7.52 kB | 
+chunk-EIBAKP2L.mjs   | -                          |   3.79 kB | 
+chunk-WQ5RXFY6.mjs   | -                          |   1.52 kB | 
+chunk-LRQR4I55.mjs   | auth-guard                 | 524 bytes | 
+chunk-K7K2CE5A.mjs   | activity-feed-component    | 239 bytes | 
+chunk-3VSURUTI.mjs   | sales-records-component    | 239 bytes | 
+chunk-QF6AY67J.mjs   | kpi-trends-component       | 233 bytes | 
+
+Application bundle generation complete. [2.054 seconds] - 2026-01-05T05:44:25.163Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+Server Config Providers: [
+  {
+    'ɵproviders': [ [Array], [Array], [Array], [Object], [Object], [Object] ]
+  }
+]
+App Config Providers: [
+  { 'ɵproviders': [ [Object], [Array] ] },
+  { 'ɵproviders': [ [Object], [Object], [Object], [Object], [] ] },
+  { 'ɵproviders': [ [Array], [Object], [Array], [Array] ] },
+  {
+    'ɵproviders': [
+      [Function], [Function],
+      [Object],   [Object],
+      [Object],   [Function],
+      [Object],   [Object]
+    ]
+  }
+]
+Merged Config Providers: [
+  { 'ɵproviders': [ [Object], [Array] ] },
+  { 'ɵproviders': [ [Object], [Object], [Object], [Object], [] ] },
+  { 'ɵproviders': [ [Array], [Object], [Array], [Array] ] },
+  {
+    'ɵproviders': [
+      [Function], [Function],
+      [Object],   [Object],
+      [Object],   [Function],
+      [Object],   [Object]
+    ]
+  },
+  {
+    'ɵproviders': [ [Array], [Array], [Array], [Object], [Object], [Object] ]
+  }
+]
+Error: NG0401: Missing Platform: This may be due to using `bootstrapApplication` on the server without passing a `BootstrapContext`. Please make sure that `bootstrapApplication` is called with a `context` argument. Find more at https://v21.angular.dev/errors/NG0401
+    at internalCreateApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-WCYETMVC.js:23717:11)
+    at bootstrapApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-BW26F2UO.js:1026:35)
+    at bootstrap (/home/rod/repos/auradashboardAngular/app/src/main.server.ts:5:25)
+    at getRoutesFromAngularRouterConfig (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10574:30)
+    at extract (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10678:15)
+    at async AngularServerApp.handle (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10993:21)
+Error: NG0401: Missing Platform: This may be due to using `bootstrapApplication` on the server without passing a `BootstrapContext`. Please make sure that `bootstrapApplication` is called with a `context` argument. Find more at https://v21.angular.dev/errors/NG0401
+    at internalCreateApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-WCYETMVC.js:23717:11)
+    at bootstrapApplication (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-BW26F2UO.js:1026:35)
+    at bootstrap (/home/rod/repos/auradashboardAngular/app/src/main.server.ts:5:25)
+    at getRoutesFromAngularRouterConfig (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10574:30)
+    at extract (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10678:15)
+    at async AngularServerApp.handle (/home/rod/repos/auradashboardAngular/app/.angular/cache/21.0.4/auradash-angular-edition/vite/deps_ssr/chunk-VLB4AEUH.js:10993:21)
