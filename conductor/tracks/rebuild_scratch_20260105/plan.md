@@ -12,7 +12,7 @@
 - [x] Task: Implement Routing and `AuthGuard` (SSR-safe). cd60c0c
 
 ## Phase 3: Feature Migration
-- [ ] Task: Implement `LoginComponent` and Auth Service.
+- [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
 - [ ] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation).
 - [ ] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation).
 
