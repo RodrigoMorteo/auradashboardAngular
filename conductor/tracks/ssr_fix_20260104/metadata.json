@@ -1,0 +1,8 @@
+{
+  "track_id": "ssr_fix_20260104",
+  "type": "bug",
+  "status": "new",
+  "created_at": "2026-01-04T12:00:00Z",
+  "updated_at": "2026-01-04T12:00:00Z",
+  "description": "Investigate and resolve SSR stability issues (NG0401) with a skeptical approach to previous findings."
+}
