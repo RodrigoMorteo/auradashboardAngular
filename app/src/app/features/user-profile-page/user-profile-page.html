@@ -1,8 +1,0 @@
-@if (userProfile(); as userProfile) {
-  <app-user-profile-lit
-    [userProfile]="userProfile"
-    (profile-save)="onProfileSave($event)"
-  ></app-user-profile-lit>
-} @else {
-  <p>Loading user profile...</p>
-}
