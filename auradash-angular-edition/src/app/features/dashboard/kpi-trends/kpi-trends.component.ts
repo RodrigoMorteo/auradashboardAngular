@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, afterNextRender } from '@angular/core';
+import { Component, ElementRef, ViewChild, afterNextRender, Inject, PLATFORM_ID } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
 
 Chart.register(...registerables);
 
@@ -20,9 +21,14 @@ export class KpiTrendsComponent {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
   private chart: Chart | undefined;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     afterNextRender(() => {
-      this.fetchDataAndInitChart();
+      if (isPlatformBrowser(this.platformId)) {
+        this.fetchDataAndInitChart();
+      }
     });
   }
 
