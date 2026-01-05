@@ -6,7 +6,7 @@
 - [x] Task: Install Tailwind CSS and configure it. 008d5d6
 - [x] Task: Verify the fresh app builds and serves (SSR) without errors. f4696d3
 
-## Phase 2: Core Architecture & Layout
+## Phase 2: Core Architecture & Layout [checkpoint: 78651f0]
 - [x] Task: Set up the mock server proxy or ensure it runs in parallel. b8d1951
 - [x] Task: Port `DashboardLayout`, `Sidebar`, and `Header` components. d102876
 - [x] Task: Implement Routing and `AuthGuard` (SSR-safe). cd60c0c
