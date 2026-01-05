@@ -4,7 +4,7 @@
 #
 # Services:
 #   - backend: The Node.js/Express mock API server.
-#   - frontend: The Angular application, served via Nginx.
+#   - frontend: The Angular application with SSR.
 #
 version: '3.8'
 
@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile
     container_name: auradash-backend
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - ./mock-server:/usr/src/app
       - /usr/src/app/node_modules
@@ -24,11 +24,14 @@ services:
 
   frontend:
     build:
-      context: ./app
+      context: ./auradash-angular-edition
       dockerfile: Dockerfile
     container_name: auradash-frontend
     ports:
-      - "4200:80"
+      - "80:4000"
+    environment:
+      - BACKEND_HOST=backend
+      - PORT=4000
     depends_on:
       - backend
     networks:

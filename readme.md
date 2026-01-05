@@ -2,40 +2,37 @@
 
 Welcome to AuraDash, a modern System Under Test (SUT) meticulously designed to validate the capabilities of contemporary test automation frameworks.
 
-This application is not a commercial product but a testing crucible. Each feature is deliberately chosen to probe the limits of automation tools and promote best practices in test script development, moving beyond legacy test apps. It is built on a modern Angular, Tailwind CSS, and Lit stack to provide a rich and challenging surface for test automation.
-
+This application is not a commercial product but a testing crucible. Each feature is deliberately chosen to probe the limits of automation tools and promote best practices in test script development. It is built on a modern stack featuring Angular 19, Tailwind CSS, and Lit to provide a rich and challenging surface for test automation.
 
 ***
 
 ### Core Tenets
 
-* **Challenging by Design:** Features like Shadow DOM, interactive SVG charts, infinite scroll, and drag-and-drop are included specifically to test a framework's resilience against common automation pain points.
-* **Built for Testability:** The most important feature is the mock backend's programmatic state control. A dedicated API endpoint (`/api/state/reset`) allows tests to set the application's state to a known baseline, enabling idempotent and non-flaky test runs.
-* **Deployment Simplicity:** The entire application can be launched with a single Docker command, eliminating environment-specific setup issues and providing a consistent testing target for any engineer on any machine.
+*   **Challenging by Design:** Features like Shadow DOM, interactive SVG charts, infinite scroll, and drag-and-drop are included specifically to test a framework's resilience against common automation pain points.
+*   **Built for Testability:** The most important feature is the mock backend's programmatic state control. A dedicated API endpoint (`/api/state/reset`) allows tests to set the application's state to a known baseline, enabling idempotent and non-flaky test runs.
+*   **Deployment Simplicity:** The entire application can be launched with a single command, eliminating environment-specific setup issues and providing a consistent testing target.
 
 ### Technology Stack
 
 | Technology         | Role in AuraDash                                               | Primary Testing Challenge                                                    |
 | ------------------ | -------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| **Angular** | Core SPA Framework                                             | Component lifecycle, dependency injection, change detection, Signals reactivity. |
-| **Angular Router** | Client-Side Routing                                            | Validating route guards, page transitions, and state preservation across views.  |
-| **Angular Signals**| State Management                                               | Testing component reactions to global state changes from a centralized service.    |
-| **Tailwind CSS** | Utility-First Styling                                          | Locator strategy robustness (moving beyond class names), responsive layout validation. |
-| **Lit** | Encapsulated Widget (User Profile)                             | Shadow DOM traversal, testing interactions with isolated components.          |
-| **ngx-charts** | Data Visualization                                             | Interacting with and asserting on non-HTML elements (SVG), handling dynamic tooltips. |
-| **Node.js/Express**| Mock API & Data Source                                         | Mocking network requests, testing loading states, error handling, and data seeding. |
-| **Docker** | Containerization                                               | Ensuring a consistent, one-command deployment for all users.                  |
+| **Angular 19**     | Core SPA Framework (with SSR)                                  | Component lifecycle, SSR hydration, Signals reactivity, and route guards.      |
+| **Tailwind CSS 3** | Utility-First Styling                                          | Locator strategy robustness (semantic vs utility classes), responsive layout. |
+| **Lit 3**          | Encapsulated Web Components                                    | Shadow DOM traversal and event handling within isolated components.          |
+| **Chart.js**       | Data Visualization                                             | Interacting with and asserting on dynamic Canvas/SVG elements and tooltips.    |
+| **Node.js/Express**| Mock API & Data Source                                         | Network mocking, loading states, error handling, and programmatic data seeding.|
+| **Docker**         | Infrastructure                                                 | Ensuring a consistent, one-command deployment environment.                   |
 
 ***
 
 ### Getting Started
 
-You can run AuraDash in two ways: locally using Node.js or via Docker. Docker is the recommended method for the most consistent experience.
+You can run AuraDash locally using Node.js or via Docker. Docker is the recommended method for the most consistent experience.
 
 #### **Prerequisites**
-* Node.js v18 or later
-* npm v9 or later
-* Docker and Docker Compose (for containerized setup)
+*   Node.js v18 or later
+*   npm v9 or later
+*   Docker and Docker Compose (for containerized setup)
 
 ---
 
@@ -44,76 +41,61 @@ You can run AuraDash in two ways: locally using Node.js or via Docker. Docker is
 This is the simplest and most reliable way to run AuraDash.
 
 1.  **Clone the repository.**
-2.  **Navigate to the root directory `auradash`.**
-3.  **Run the application:**
+2.  **Run the application from the root:**
     ```bash
     docker-compose up
     ```
-4.  Wait for the containers to build and the services to start.
-5.  **Open your browser and navigate to `http://localhost`**.
-
-The application will be running with the Angular frontend communicating with the mock backend.
+3.  **Open your browser to `http://localhost`**.
 
 ---
 
 #### **Option 2: Running Locally**
 
-
-
-This is the preferred method for development. You can start both the mock server and the Angular application from the root directory.
-
-
+This is the preferred method for development. You can start both the mock server and the Angular application from the root directory using the unified dev script.
 
 1.  **Install dependencies in the root:**
-
     ```bash
-
-    # Note: Use packages.json if package.json is missing
-
     npm install
-
     ```
-
 2.  **Start both services:**
-
     ```bash
-
     npm run dev
+    ```
+3.  **Open your browser to `http://localhost:4200`**.
 
+---
+
+### Running Unit Tests
+
+To run the unit tests for the Angular application:
+
+```bash
+npm test
+```
+
+#### **Running in WSL (Windows Subsystem for Linux)**
+If you are running in WSL and encounter issues with the Chrome binary, you can point to your Windows Chrome installation and use the headless mode:
+
+1.  **Set the `CHROME_BIN` environment variable:**
+    ```bash
+    export CHROME_BIN="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+    ```
+2.  **Run the tests in CI mode:**
+    ```bash
+    npm run test:ci
     ```
 
+---
 
+### Default Credentials
+To access the dashboard, use the following credentials:
+*   **Email:** `test@example.com`
+*   **Password:** `password123`
 
-Alternatively, you can run them in separate terminals:
-
-
-
-**Terminal 1: Start the Mock Backend**
-
-
-
-```bash
-
-cd mock-server
-
-npm install
-
-npm start
-
-```
-
-
-
-**Terminal 2: Start the Angular Application**
-
-
+### Programmatic State Reset
+You can reset the application state to a specific profile at any time by sending a POST request to the mock server:
 
 ```bash
-
-cd auradash-angular-edition
-
-npm install
-
-npm start
-
+curl -X POST http://localhost:3001/api/state/reset -H "Content-Type: application/json" -d '{"profile": "default"}'
 ```
+Available profiles: `default`, `empty_state`, `error_state`.

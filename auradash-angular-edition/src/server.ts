@@ -18,7 +18,7 @@ const commonEngine = new CommonEngine();
  */
 app.all('/api/**', (req, res) => {
   const options = {
-    hostname: 'localhost',
+    hostname: process.env['BACKEND_HOST'] || 'localhost',
     port: 3001,
     path: req.url,
     method: req.method,
