@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, afterNextRender } from '@angular/core';
 import { html, LitElement } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
+import { HttpClient } from '@angular/common/http';
 
 @customElement('user-profile-lit')
 export class UserProfileLit extends LitElement {
@@ -29,13 +30,27 @@ export class UserProfileLit extends LitElement {
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class UserProfileLitComponent {
-  name = 'Admin User';
-  email = 'admin&#64;example.com';
+  name = 'Loading...';
+  email = '...';
   isBrowser = false;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     afterNextRender(() => {
       this.isBrowser = true;
+      this.fetchProfile();
+    });
+  }
+
+  fetchProfile() {
+    this.http.get<any>('/api/user/profile').subscribe({
+      next: (profile) => {
+        this.name = profile.name;
+        this.email = profile.email;
+      },
+      error: () => {
+        this.name = 'Admin User (Fallback)';
+        this.email = 'admin@example.com';
+      }
     });
   }
 }

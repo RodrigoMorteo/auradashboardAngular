@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
               type="email" 
               formControlName="email"
               class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition"
-              placeholder="admin@example.com"
+              placeholder="test&#64;example.com"
             >
           </div>
           
@@ -61,7 +61,7 @@ export class LoginComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      email: ['admin@example.com', [Validators.required, Validators.email]],
+      email: ['test@example.com', [Validators.required, Validators.email]],
       password: ['password123', [Validators.required]]
     });
   }
