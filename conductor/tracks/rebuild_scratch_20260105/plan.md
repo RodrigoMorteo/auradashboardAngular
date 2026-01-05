@@ -19,7 +19,7 @@
 - [x] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table). 163e058
 - [x] Task: Implement `ActivityLogComponent` ("Streaming-like" log). a77cdfa
 - [x] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement). 8f28c03
-- [ ] Task: Implement Theme Selection (Light/Dark mode) in User Profile.
+- [x] Task: Implement Theme Selection (Light/Dark mode) in User Profile. 7037094
 
 ## Phase 4: Final Verification
 - [ ] Task: Verify the full application build and SSR serve command.
