@@ -13,7 +13,7 @@
 
 ## Phase 3: Feature Migration
 - [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
-- [ ] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation).
+- [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
 - [ ] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation).
 
 ## Phase 4: Final Verification
