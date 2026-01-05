@@ -15,6 +15,10 @@ export const routes: Routes = [
       {
         path: 'profile',
         loadComponent: () => import('./features/user-profile-page/user-profile-page.component').then(m => m.UserProfilePageComponent)
+      },
+      {
+        path: 'sales',
+        loadComponent: () => import('./features/sales-records/sales-records/sales-records.component').then(m => m.SalesRecordsComponent)
       }
     ]
   },
