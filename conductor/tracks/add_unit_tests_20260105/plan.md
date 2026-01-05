@@ -12,7 +12,7 @@
 - [x] Task: Implement unit tests for `authGuard` (authenticated vs unauthenticated routes). 79b0028
 
 ## Phase 3: Frontend Component Testing
-- [ ] Task: Implement unit tests for `LoginComponent` (validation, error handling).
+- [x] Task: Implement unit tests for `LoginComponent` (validation, error handling). 444f65e
 - [ ] Task: Implement unit tests for `KpiTrendsComponent` (verifying Chart.js is not initialized on server).
 - [ ] Task: Implement unit tests for `SalesRecordsComponent`.
 
