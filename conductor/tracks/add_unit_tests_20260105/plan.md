@@ -8,7 +8,7 @@
 
 ## Phase 2: Frontend Core Testing
 - [x] Task: Implement unit tests for `AuthService` covering token management and login flow. 004e020
-- [ ] Task: Implement unit tests for `ThemeService`.
+- [x] Task: Implement unit tests for `ThemeService`. a566b8b
 - [ ] Task: Implement unit tests for `authGuard` (authenticated vs unauthenticated routes).
 
 ## Phase 3: Frontend Component Testing
