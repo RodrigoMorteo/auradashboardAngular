@@ -16,7 +16,7 @@
 - [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
 - [x] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation). 147bb73
 - [x] Task: Fix Logout functionality in `HeaderComponent`. 84da12d
-- [ ] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table).
+- [x] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table). 163e058
 - [ ] Task: Implement `ActivityLogComponent` ("Streaming-like" log).
 - [ ] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement).
 - [ ] Task: Implement Theme Selection (Light/Dark mode) in User Profile.
