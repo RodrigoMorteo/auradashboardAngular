@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const fs = require('fs').promises; // Use promises-based fs for async operations
+const fs = require('fs'); // Use synchronous fs for initialization and simplicity in this mock
 const path = require('path');
 
 const app = express();
@@ -31,11 +31,10 @@ const SLOW_RESPONSE_DELAY_MS = 2000; // 2 seconds
 let state = {}; // This will hold our mock data in memory.
 let currentStateProfile = PROFILES.DEFAULT;
 
-async function loadState(profileName = PROFILES.DEFAULT) {
+function loadState(profileName = PROFILES.DEFAULT) {
   try {
     const dataPath = path.join(__dirname, 'data', `${profileName}.json`);
-    // Use async file read to avoid blocking the event loop
-    const rawData = await fs.readFile(dataPath, 'utf-8');
+    const rawData = fs.readFileSync(dataPath, 'utf-8');
     state = JSON.parse(rawData);
     currentStateProfile = profileName;
     console.log(`[State Manager] Switched to profile: ${profileName}`);
@@ -102,10 +101,10 @@ function paginate(data, pageQuery, pageSizeQuery) {
 // --- API Endpoints ---
 
 // The most important endpoint for robust testing.
-app.post('/api/state/reset', async (req, res) => {
+app.post('/api/state/reset', (req, res) => {
   const { profile } = req.body;
   const profileToLoad = profile || PROFILES.DEFAULT;
-  const success = await loadState(profileToLoad);
+  const success = loadState(profileToLoad);
   if (success) return res.status(200).json({ message: `State reset successfully to profile: ${profileToLoad}` });
   res.status(404).json({ error: `Failed to load profile: '${profileToLoad}'. The profile does not exist or is invalid.` });
 });
@@ -176,7 +175,11 @@ app.get('/api/widgets/activity-feed', (req, res) => {
 
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`AuraDash Mock API Server listening on port ${PORT}`);
-  console.log(`Current data profile: '${currentStateProfile}'`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`AuraDash Mock API Server listening on port ${PORT}`);
+    console.log(`Current data profile: '${currentStateProfile}'`);
+  });
+}
+
+module.exports = app;
