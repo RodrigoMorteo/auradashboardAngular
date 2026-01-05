@@ -15,7 +15,12 @@
 - [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
 - [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
 - [x] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation). 147bb73
+- [~] Task: Fix Logout functionality in `HeaderComponent`.
+- [ ] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table).
+- [ ] Task: Implement `ActivityLogComponent` ("Streaming-like" log).
+- [ ] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement).
+- [ ] Task: Implement Theme Selection (Light/Dark mode) in User Profile.
 
 ## Phase 4: Final Verification
-- [x] Task: Verify the full application build and SSR serve command. fdcbf8c
+- [ ] Task: Verify the full application build and SSR serve command.
 - [ ] Task: Conductor - User Manual Verification 'Final Verification' (Protocol in workflow.md)
