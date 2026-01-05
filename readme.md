@@ -58,32 +58,62 @@ The application will be running with the Angular frontend communicating with the
 
 #### **Option 2: Running Locally**
 
-This requires running the mock server and the Angular development server in separate terminals.
+
+
+This is the preferred method for development. You can start both the mock server and the Angular application from the root directory.
+
+
+
+1.  **Install dependencies in the root:**
+
+    ```bash
+
+    # Note: Use packages.json if package.json is missing
+
+    npm install
+
+    ```
+
+2.  **Start both services:**
+
+    ```bash
+
+    npm run dev
+
+    ```
+
+
+
+Alternatively, you can run them in separate terminals:
+
+
 
 **Terminal 1: Start the Mock Backend**
 
+
+
 ```bash
-# Navigate to the mock server directory
+
 cd mock-server
 
-# Install dependencies
 npm install
 
-# Start the server
 npm start
+
 ```
 
-Now start the UI:
+
+
+**Terminal 2: Start the Angular Application**
+
+
+
 ```bash
-# Move back one folder
-cd ..
 
-# Navigate to the Angular application directory
-cd app
+cd auradash-angular-edition
 
-# Install dependencies
 npm install
 
-# Start the Angular development server
 npm start
+
 ```

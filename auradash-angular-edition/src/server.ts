@@ -3,6 +3,7 @@ import { CommonEngine, isMainModule } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import http from 'node:http';
 import bootstrap from './main.server';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
@@ -13,16 +14,29 @@ const app = express();
 const commonEngine = new CommonEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * Proxy /api requests to the mock server on port 3001
  */
+app.all('/api/**', (req, res) => {
+  const options = {
+    hostname: 'localhost',
+    port: 3001,
+    path: req.url,
+    method: req.method,
+    headers: req.headers
+  };
+
+  const proxy = http.request(options, (remoteRes) => {
+    res.writeHead(remoteRes.statusCode || 500, remoteRes.headers);
+    remoteRes.pipe(res, { end: true });
+  });
+
+  req.pipe(proxy, { end: true });
+
+  proxy.on('error', (err) => {
+    console.error('Proxy error:', err);
+    res.status(502).send('Bad Gateway');
+  });
+});
 
 /**
  * Serve static files from /browser

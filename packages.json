@@ -4,16 +4,17 @@
   "private": true,
   "description": "AuraDash: A Modern Test Application Blueprint for Advanced Framework Validation (Angular Edition)",
   "workspaces": [
-    "apps/auradash",
-    "apps/mock-api"
+    "auradash-angular-edition",
+    "mock-server"
   ],
   "scripts": {
-    "setup": "npm install --workspaces --if-present",
-    "dev": "npm run dev --workspace=apps/mock-api & npm run start --workspace=apps/auradash",
-    "build": "npm run build --workspace=apps/auradash",
-    "start:prod": "npm run start --workspace=apps/mock-api",
-    "e2e": "npm run test --workspace=apps/auradash",
-    "e2e:init": "npm install --workspace=apps/auradash && npx playwright install --with-deps"
+    "setup": "npm install",
+    "dev:mock": "cd mock-server && node server.js",
+    "dev:app": "cd auradash-angular-edition && npm start",
+    "dev": "npm-run-all --parallel dev:mock dev:app",
+    "build": "npm run build --workspace=auradash-angular-edition",
+    "start:prod": "cd mock-server && node server.js",
+    "test": "npm test --workspace=auradash-angular-edition"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
