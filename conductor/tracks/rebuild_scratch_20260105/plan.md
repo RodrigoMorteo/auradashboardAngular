@@ -11,7 +11,7 @@
 - [x] Task: Port `DashboardLayout`, `Sidebar`, and `Header` components. d102876
 - [x] Task: Implement Routing and `AuthGuard` (SSR-safe). cd60c0c
 
-## Phase 3: Feature Migration
+## Phase 3: Feature Migration [checkpoint: ce2e66f]
 - [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
 - [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
 - [x] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation). 147bb73
