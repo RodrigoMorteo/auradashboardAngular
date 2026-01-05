@@ -15,7 +15,7 @@
 - [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
 - [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
 - [x] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation). 147bb73
-- [~] Task: Fix Logout functionality in `HeaderComponent`.
+- [x] Task: Fix Logout functionality in `HeaderComponent`. 84da12d
 - [ ] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table).
 - [ ] Task: Implement `ActivityLogComponent` ("Streaming-like" log).
 - [ ] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement).
