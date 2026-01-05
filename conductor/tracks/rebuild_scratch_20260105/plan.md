@@ -14,7 +14,7 @@
 ## Phase 3: Feature Migration
 - [x] Task: Implement `LoginComponent` and Auth Service. e5cfc78
 - [x] Task: Implement `KpiTrendsComponent` with Chart.js (Strict SSR isolation). 1591c9b
-- [ ] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation).
+- [x] Task: Implement `UserProfilePageComponent` and the Lit component integration (Strict SSR isolation). 147bb73
 
 ## Phase 4: Final Verification
 - [ ] Task: Verify the full application build and SSR serve command.
