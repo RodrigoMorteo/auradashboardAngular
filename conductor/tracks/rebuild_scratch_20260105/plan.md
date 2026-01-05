@@ -18,7 +18,7 @@
 - [x] Task: Fix Logout functionality in `HeaderComponent`. 84da12d
 - [x] Task: Implement `SalesRecordsComponent` (Sortable/Draggable Dynamic Table). 163e058
 - [x] Task: Implement `ActivityLogComponent` ("Streaming-like" log). a77cdfa
-- [ ] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement).
+- [x] Task: Implement Dashboard Draggable Grid (Minimal versions and re-arrangement). 8f28c03
 - [ ] Task: Implement Theme Selection (Light/Dark mode) in User Profile.
 
 ## Phase 4: Final Verification
