@@ -13,7 +13,7 @@
 
 ## Phase 3: Frontend Component Testing
 - [x] Task: Implement unit tests for `LoginComponent` (validation, error handling). 444f65e
-- [ ] Task: Implement unit tests for `KpiTrendsComponent` (verifying Chart.js is not initialized on server).
+- [x] Task: Implement unit tests for `KpiTrendsComponent` (verifying Chart.js is not initialized on server). b5a0d25
 - [ ] Task: Implement unit tests for `SalesRecordsComponent`.
 
 ## Phase 4: Verification
