@@ -7,7 +7,7 @@
 - [x] Task: Verify the fresh app builds and serves (SSR) without errors. f4696d3
 
 ## Phase 2: Core Architecture & Layout
-- [ ] Task: Set up the mock server proxy or ensure it runs in parallel.
+- [x] Task: Set up the mock server proxy or ensure it runs in parallel. b8d1951
 - [ ] Task: Port `DashboardLayout`, `Sidebar`, and `Header` components.
 - [ ] Task: Implement Routing and `AuthGuard` (SSR-safe).
 
