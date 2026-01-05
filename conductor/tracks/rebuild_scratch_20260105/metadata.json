@@ -1,0 +1,8 @@
+{
+  "track_id": "rebuild_scratch_20260105",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-05T17:20:00Z",
+  "updated_at": "2026-01-05T17:20:00Z",
+  "description": "Initialize a fresh Angular project using a stable, LTS version to replicate AuraDash functionality and eliminate SSR instability."
+}
