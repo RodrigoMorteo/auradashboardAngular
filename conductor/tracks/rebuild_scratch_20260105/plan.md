@@ -1,8 +1,8 @@
 # Plan: Rebuild AuraDash Angular from Scratch
 
 ## Phase 1: Initialization and Setup
-- [ ] Task: Clean up existing `app` directory (backup relevant source code to a temporary location if needed, then delete).
-- [ ] Task: Initialize new Angular 18/19 workspace (`ng new auradash-angular-edition --ssr`).
+- [x] Task: Clean up existing `app` directory (backup relevant source code to a temporary location if needed, then delete).
+- [x] Task: Initialize new Angular 18/19 workspace (`ng new auradash-angular-edition --ssr`). b6f4898
 - [ ] Task: Install Tailwind CSS and configure it.
 - [ ] Task: Verify the fresh app builds and serves (SSR) without errors.
 
