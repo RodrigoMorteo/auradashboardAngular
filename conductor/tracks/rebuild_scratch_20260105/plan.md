@@ -8,7 +8,7 @@
 
 ## Phase 2: Core Architecture & Layout
 - [x] Task: Set up the mock server proxy or ensure it runs in parallel. b8d1951
-- [ ] Task: Port `DashboardLayout`, `Sidebar`, and `Header` components.
+- [x] Task: Port `DashboardLayout`, `Sidebar`, and `Header` components. d102876
 - [ ] Task: Implement Routing and `AuthGuard` (SSR-safe).
 
 ## Phase 3: Feature Migration
