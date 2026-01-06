@@ -1,0 +1,27 @@
+{
+  "name": "auradash-monorepo",
+  "version": "0.3.0",
+  "private": true,
+  "description": "AuraDash: A Modern Test Application Blueprint for Advanced Framework Validation (Angular Edition)",
+  "workspaces": [
+    "auradash-angular-edition",
+    "mock-server"
+  ],
+  "scripts": {
+    "setup": "npm install",
+    "dev:mock": "cd mock-server && node server.js",
+    "dev:app": "cd auradash-angular-edition && npm start",
+    "dev": "npm-run-all --parallel dev:mock dev:app",
+    "build": "npm run build --workspace=auradash-angular-edition",
+    "start:prod": "cd mock-server && node server.js",
+    "test:app": "npm test --workspace=auradash-angular-edition",
+    "test:mock": "npm test --workspace=mock-server",
+    "test": "npm run test:app && npm run test:mock",
+    "test:ci": "npm test --workspace=auradash-angular-edition -- --watch=false --browsers=ChromeHeadless && npm run test:mock"
+  },
+  "devDependencies": {
+    "@angular/animations": "^19.2.17",
+    "@angular/compiler": "^19.2.17",
+    "npm-run-all": "^4.1.5"
+  }
+}

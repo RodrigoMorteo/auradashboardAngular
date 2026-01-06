@@ -12,7 +12,8 @@
 - **Middleware:** Body-parser, CORS.
 
 ## Testing and Quality
-- **Unit Testing:** Jasmine (test framework) and Karma (test runner).
+- **Frontend Unit Testing:** Jasmine (test framework) and Karma (test runner).
+- **Backend Unit Testing:** Jest and Supertest.
 - **Code Quality:** Prettier (for consistent formatting).
 
 ## Infrastructure

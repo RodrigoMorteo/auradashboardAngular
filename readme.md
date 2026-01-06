@@ -67,20 +67,30 @@ This is the preferred method for development. You can start both the mock server
 
 ### Running Unit Tests
 
-To run the unit tests for the Angular application:
+You can run unit tests for both the Angular application and the mock backend from the root directory.
 
+#### **All Tests**
 ```bash
 npm test
 ```
 
+#### **Individual Projects**
+```bash
+# Frontend only
+npm run test:app
+
+# Backend only
+npm run test:mock
+```
+
 #### **Running in WSL (Windows Subsystem for Linux)**
-If you are running in WSL and encounter issues with the Chrome binary, you can point to your Windows Chrome installation and use the headless mode:
+If you are running in WSL and encounter issues with the Chrome binary during frontend tests, you can point to your Windows Chrome installation and use the headless mode:
 
 1.  **Set the `CHROME_BIN` environment variable:**
     ```bash
     export CHROME_BIN="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
     ```
-2.  **Run the tests in CI mode:**
+2.  **Run all tests in CI mode:**
     ```bash
     npm run test:ci
     ```
