@@ -9,6 +9,6 @@
 - [x] Task: Create `tests/dashboard.spec.ts` for Dashboard visibility (KPIs, layout). 25f4286
 - [~] Task: Create `tests/navigation.spec.ts` for Sidebar navigation verification.
 
-## Phase 3: Execution and Refinement
+## Phase 3: Execution and Refinement [checkpoint: 4cc1c87]
 - [x] Task: Run all tests using `npx playwright test`. 9b9679b
 - [x] Task: Add a script to `package.json` for running E2E tests if one doesn't exist. 9b9679b
