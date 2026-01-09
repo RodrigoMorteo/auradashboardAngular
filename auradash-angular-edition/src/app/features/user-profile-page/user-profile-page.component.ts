@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UserProfileLitComponent } from '../user-profile-lit/user-profile-lit.component';
 import { ThemeService, Theme } from '../../core/services/theme.service';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { UserProfile } from '../../core/models/user-profile.model';
 
 @Component({
   selector: 'app-user-profile-page',
   standalone: true,
-  imports: [CommonModule, UserProfileLitComponent],
+  imports: [CommonModule, ReactiveFormsModule, UserProfileLitComponent],
   template: `
     <div class="space-y-6">
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white transition-colors">User Profile</h2>
@@ -20,12 +23,12 @@ import { CommonModule } from '@angular/common';
           <div class="space-y-6">
             <div class="grid grid-cols-3 gap-4 border-b border-slate-100 dark:border-slate-700 pb-4">
               <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Full Name</span>
-              <span class="col-span-2 text-slate-900 dark:text-white font-medium">Admin User</span>
+              <span class="col-span-2 text-slate-900 dark:text-white font-medium">{{ profile?.name || 'Loading...' }}</span>
             </div>
             
             <div class="grid grid-cols-3 gap-4 border-b border-slate-100 dark:border-slate-700 pb-4">
               <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Email Address</span>
-              <span class="col-span-2 text-slate-900 dark:text-white font-medium">admin&#64;example.com</span>
+              <span class="col-span-2 text-slate-900 dark:text-white font-medium">{{ profile?.email || 'Loading...' }}</span>
             </div>
             
             <div class="mt-8">
@@ -70,12 +73,107 @@ import { CommonModule } from '@angular/common';
             </div>
           </div>
         </div>
+
+        <!-- Communication Preferences -->
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
+          <h3 class="text-xl font-semibold mb-6 text-slate-900 dark:text-white">Communication Preferences</h3>
+          
+          <form [formGroup]="prefsForm" (ngSubmit)="savePrefs()" class="space-y-6">
+            <div class="space-y-4">
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="checkbox" formControlName="emailNotifications" class="w-4 h-4 text-slate-900 border-slate-300 rounded focus:ring-slate-900">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Email Notifications</span>
+              </label>
+              
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="checkbox" formControlName="smsNotifications" class="w-4 h-4 text-slate-900 border-slate-300 rounded focus:ring-slate-900">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">SMS Notifications</span>
+              </label>
+            </div>
+
+            <div class="space-y-3">
+              <span class="block text-sm font-semibold text-slate-900 dark:text-white">Marketing Frequency</span>
+              <div class="flex flex-col space-y-2">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" formControlName="marketingFrequency" value="Daily" class="w-4 h-4 text-slate-900 border-slate-300 focus:ring-slate-900">
+                  <span class="text-sm text-slate-700 dark:text-slate-300">Daily</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" formControlName="marketingFrequency" value="Weekly" class="w-4 h-4 text-slate-900 border-slate-300 focus:ring-slate-900">
+                  <span class="text-sm text-slate-700 dark:text-slate-300">Weekly</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" formControlName="marketingFrequency" value="Monthly" class="w-4 h-4 text-slate-900 border-slate-300 focus:ring-slate-900">
+                  <span class="text-sm text-slate-700 dark:text-slate-300">Monthly</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" [disabled]="saving" class="w-full py-2 px-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 disabled:opacity-50 transition">
+                {{ saving ? 'Saving...' : 'Save Changes' }}
+              </button>
+            </div>
+            
+            <p *ngIf="saveSuccess" class="text-green-600 text-sm text-center">Changes saved successfully!</p>
+          </form>
+        </div>
       </div>
     </div>
   `
 })
-export class UserProfilePageComponent {
-  constructor(public themeService: ThemeService) {}
+export class UserProfilePageComponent implements OnInit {
+  profile: UserProfile | null = null;
+  prefsForm: FormGroup;
+  saving = false;
+  saveSuccess = false;
+
+  private fb = inject(FormBuilder);
+  private http = inject(HttpClient);
+  public themeService = inject(ThemeService);
+
+  constructor() {
+    this.prefsForm = this.fb.group({
+      emailNotifications: [false],
+      smsNotifications: [false],
+      marketingFrequency: ['Weekly', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    this.fetchProfile();
+  }
+
+  fetchProfile() {
+    this.http.get<UserProfile>('/api/user/profile').subscribe({
+      next: (profile) => {
+        this.profile = profile;
+        this.prefsForm.patchValue({
+          emailNotifications: profile.emailNotifications,
+          smsNotifications: profile.smsNotifications,
+          marketingFrequency: profile.marketingFrequency
+        });
+      }
+    });
+  }
+
+  savePrefs() {
+    if (this.prefsForm.valid) {
+      this.saving = true;
+      this.saveSuccess = false;
+      this.http.post<UserProfile>('/api/user/profile', this.prefsForm.value).subscribe({
+        next: (updated) => {
+          this.profile = updated;
+          this.saving = false;
+          this.saveSuccess = true;
+          setTimeout(() => this.saveSuccess = false, 3000);
+        },
+        error: () => {
+          this.saving = false;
+        }
+      });
+    }
+  }
 
   setTheme(theme: Theme) {
     this.themeService.setTheme(theme);
