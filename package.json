@@ -16,6 +16,7 @@
     "start:prod": "cd mock-server && node server.js",
     "test:app": "npm test --workspace=auradash-angular-edition",
     "test:mock": "npm test --workspace=mock-server",
+    "test:e2e": "npx playwright test",
     "test": "npm run test:app && npm run test:mock",
     "test:ci": "npm test --workspace=auradash-angular-edition -- --watch=false --browsers=ChromeHeadless && npm run test:mock"
   },
