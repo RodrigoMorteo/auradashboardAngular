@@ -10,4 +10,4 @@
 - [x] Task: Update `README.md` with instructions on how to start the development environment. 0000000
 
 ## Phase 3: Final Verification
-- [ ] Task: Perform manual login verification using the browser.
+- [x] Task: Perform manual login verification using the browser.
