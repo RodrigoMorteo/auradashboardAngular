@@ -1,6 +1,6 @@
 # Plan: Add Functional Tests with Playwright
 
-## Phase 1: Configuration Verification
+## Phase 1: Configuration Verification [checkpoint: 95fc925]
 - [x] Task: Verify `playwright.config.ts` matches the current local server setup (port 4200/3001). 868f65b
 - [x] Task: Ensure the `tests/` directory is clean or prepared for new tests. 868f65b
 
