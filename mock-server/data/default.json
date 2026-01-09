@@ -63,6 +63,9 @@
     "name": "Test User",
     "email": "test@example.com",
     "avatarUrl": "/assets/images/avatar-placeholder.png",
-    "theme": "Light"
+    "theme": "Light",
+    "emailNotifications": true,
+    "smsNotifications": false,
+    "marketingFrequency": "Weekly"
   }
 }

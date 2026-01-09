@@ -17,6 +17,9 @@
   "user-profile": {
     "name": "Test User",
     "email": "test@example.com",
-    "avatarUrl": "/assets/images/avatar-placeholder.png"
+    "avatarUrl": "/assets/images/avatar-placeholder.png",
+    "emailNotifications": false,
+    "smsNotifications": false,
+    "marketingFrequency": "Monthly"
   }
 }

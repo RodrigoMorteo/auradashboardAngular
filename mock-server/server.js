@@ -129,6 +129,16 @@ app.get('/api/user/profile', (req, res) => {
   res.json(state['user-profile']);
 });
 
+app.post('/api/user/profile', (req, res) => {
+  const updates = req.body;
+  if (!state['user-profile']) {
+    return res.status(404).json({ error: 'User profile not found in current state' });
+  }
+  // Merge updates
+  state['user-profile'] = { ...state['user-profile'], ...updates };
+  res.json(state['user-profile']);
+});
+
 
 app.get('/api/widgets/sales-records', (req, res) => {
     const sales = state.salesRecords || [];
