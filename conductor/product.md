@@ -18,4 +18,5 @@ AuraDash (Angular Edition) is a modern System Under Test (SUT) meticulously desi
 - **Shadow DOM Integration:** Web components built with Lit to challenge framework selector strategies and event handling.
 - **Programmatic State Management:** A dedicated API for resetting and setting application state, ensuring idempotent and non-flaky test runs.
 - **Interactive Elements:** Drag-and-drop interfaces to test complex user interactions.
+- **Form Interaction Challenges:** Complex form controls including radio buttons, checkboxes, and state persistence to validate form handling and verification strategies.
 - **RBAC Simulation:** Built-in Role-Based Access Control scenarios to demonstrate how tests can adapt to different user permission levels.
