@@ -9,6 +9,7 @@ This application is not a commercial product but a testing crucible. Each featur
 ### Core Tenets
 
 *   **Challenging by Design:** Features like Shadow DOM, interactive SVG charts, infinite scroll, and drag-and-drop are included specifically to test a framework's resilience against common automation pain points.
+*   **Form Interaction:** Includes complex form controls like checkboxes and radio buttons with backend persistence to test form handling and verification.
 *   **Built for Testability:** The most important feature is the mock backend's programmatic state control. A dedicated API endpoint (`/api/state/reset`) allows tests to set the application's state to a known baseline, enabling idempotent and non-flaky test runs.
 *   **Deployment Simplicity:** The entire application can be launched with a single command, eliminating environment-specific setup issues and providing a consistent testing target.
 
@@ -21,6 +22,7 @@ This application is not a commercial product but a testing crucible. Each featur
 | **Lit 3**          | Encapsulated Web Components                                    | Shadow DOM traversal and event handling within isolated components.          |
 | **Chart.js**       | Data Visualization                                             | Interacting with and asserting on dynamic Canvas/SVG elements and tooltips.    |
 | **Node.js/Express**| Mock API & Data Source                                         | Network mocking, loading states, error handling, and programmatic data seeding.|
+| **Playwright**     | E2E Testing Framework                                          | Cross-browser automation, robust locator strategies, and state verification. |
 | **Docker**         | Infrastructure                                                 | Ensuring a consistent, one-command deployment environment.                   |
 
 ***
@@ -120,3 +122,6 @@ You can reset the application state to a specific profile at any time by sending
 curl -X POST http://localhost:3001/api/state/reset -H "Content-Type: application/json" -d '{"profile": "default"}'
 ```
 Available profiles: `default`, `empty_state`, `error_state`.
+
+
+*Made with love using [Gemini-CLI](https://geminicli.com/) and [Conductor](https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/)*
