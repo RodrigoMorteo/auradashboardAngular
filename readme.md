@@ -97,6 +97,17 @@ If you are running in WSL and encounter issues with the Chrome binary during fro
 
 ---
 
+### Running Functional Tests (E2E)
+
+Functional tests are implemented using Playwright and are located in the `tests/` directory.
+
+#### **Run E2E Tests**
+```bash
+npm run test:e2e
+```
+
+---
+
 ### Default Credentials
 To access the dashboard, use the following credentials:
 *   **Email:** `test@example.com`
