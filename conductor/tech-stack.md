@@ -13,6 +13,7 @@
 
 ## Testing and Quality
 - **Frontend Unit Testing:** Jasmine (test framework) and Karma (test runner).
+- **Functional/E2E Testing:** Playwright (with TypeScript).
 - **Backend Unit Testing:** Jest and Supertest.
 - **Code Quality:** Prettier (for consistent formatting).
 
